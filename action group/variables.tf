@@ -17,3 +17,9 @@ variable "location_cli" {
 variable "location_slug" {
   type = string
 }
+
+variable "resource_group_name" {
+  type = string
+}
+
+
