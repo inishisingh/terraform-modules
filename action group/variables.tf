@@ -1,19 +1,19 @@
-variable "name" {
-  description = "Name of the Action Group"
-  type        = string
+variable "environment" {
+  type = string
 }
 
-variable "resource_group_name" {
-  description = "Name of the resource group"
-  type        = string
+variable "workload" {
+  type = string
 }
 
-variable "short_name" {
-  description = "Short name for the Action Group"
-  type        = string
+variable "department" {
+  type = string
 }
 
-variable "location" {
-  description = "Azure region"
-  type        = string
+variable "location_cli" {
+  type = string
+}
+
+variable "location_slug" {
+  type = string
 }
