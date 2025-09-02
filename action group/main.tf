@@ -13,15 +13,6 @@ resource "azurerm_monitor_action_group" "this" {
     }
   }
 
-  dynamic "sms_receiver" {
-    for_each = var.sms_receivers
-    content {
-      name         = sms_receiver.key
-      country_code = sms_receiver.value.country_code
-      phone_number = sms_receiver.value.phone_number
-    }
-  }
-
   dynamic "webhook_receiver" {
     for_each = var.webhook_receivers
     content {
