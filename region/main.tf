@@ -7,19 +7,3 @@ locals {
     "westeurope"  = { location = "West Europe", location_short = "weu", location_slug = "west-europe", location_cli = "westeurope" }
   }
 }
-
-output "location" {
-  value = local.region_map[var.azure_region].location
-}
-
-output "location_short" {
-  value = local.region_map[var.azure_region].location_short
-}
-
-output "location_slug" {
-  value = local.region_map[var.azure_region].location_slug
-}
-
-output "location_cli" {
-  value = local.region_map[var.azure_region].location_cli
-}
