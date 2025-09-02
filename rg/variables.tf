@@ -10,6 +10,6 @@ variable "department" {
   type = string
 }
 
-variable "location_slug" {
+variable "location" {
   type = string
 }
