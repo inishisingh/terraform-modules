@@ -1,12 +1,12 @@
-variable "client_name" {
-  type = string
-}
-
 variable "environment" {
   type = string
 }
 
-variable "stack" {
+variable "workload" {
+  type = string
+}
+
+variable "department" {
   type = string
 }
 

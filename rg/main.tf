@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "this" {
-  name     = "${var.client_name}-${var.environment}-${var.stack}-rg"
+  name     = "${var.location}-${var.environment}-${var.workload}-${var.department}-rg-am"
   location = var.location
 }
