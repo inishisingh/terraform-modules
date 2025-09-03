@@ -1,4 +1,4 @@
-resource "azurerm_monitor_action_group" "azurerm" {
+resource "azurerm_monitor_action_group" "azurerm_ag" {
   name     = "${var.location_cli}-${var.environment}-${var.workload}-${var.department}-ag-am"
   resource_group_name = var.resource_group_name
   short_name          = "${var.location_slug}${var.environment}agam"
