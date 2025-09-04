@@ -6,3 +6,9 @@ resource "azurerm_storage_account" "azurerm_sa" {
   account_replication_type = var.account_replication_type
   access_tier              = var.access_tier
 }
+
+resource "azurerm_storage_container" "azure_rm_conatiner" {
+  name                  = "statefile"
+  storage_account_id    = azurerm_storage_account.azurerm_sa.id
+  container_access_type = "private"
+}
