@@ -23,3 +23,14 @@ variable "resource_group_name" {
 }
 
 
+variable "email_receivers" {
+  type = map(string)
+  description = "Map of email receiver names to email addresses"
+}
+
+variable "webhook_receivers" {
+  type = map(string)
+  description = "Map of webhook receiver names to service URIs"
+}
+
+
