@@ -1,4 +1,4 @@
-resource "azurerm_storage_account" "this" {
+resource "azurerm_storage_account" "azurerm_sa" {
   name                     = "${var.environment}${var.workload}${var.department}saam"
   resource_group_name      = var.resource_group_name
   location                 = var.location_cli
