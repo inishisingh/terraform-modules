@@ -1,15 +1,25 @@
-variable "name" {
-  description = "The name of the storage account"
-  type        = string
+variable "environment" {
+  type = string
+}
+
+variable "workload" {
+  type = string
+}
+
+variable "department" {
+  type = string
+}
+
+variable "location_cli" {
+  type = string
+}
+
+variable "resource_group_name" {
+  type = string
 }
 
 variable "resource_group_name" {
   description = "The name of the resource group"
-  type        = string
-}
-
-variable "location" {
-  description = "The Azure region where the storage account will be created"
   type        = string
 }
 
@@ -29,10 +39,4 @@ variable "access_tier" {
   description = "Defines the access tier for BlobStorage and General Purpose v2 accounts (Hot or Cool)"
   type        = string
   default     = "Hot"
-}
-
-variable "tags" {
-  description = "A mapping of tags to assign to the resource"
-  type        = map(string)
-  default     = {}
 }
