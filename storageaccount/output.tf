@@ -10,6 +10,6 @@ output "storage_account_name" {
 
 output "storage_account__conatiner_name" {
   description = "The name of the storage account conatiner"
-  value       = azurerm_storage_account.azure_rm_conatiner.name
+  value       = azurerm_storage_container.azure_rm_conatiner.name
 }
 
