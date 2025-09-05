@@ -1,6 +1,6 @@
 # Azure Log Analytics WorkSpace Module
 
-This Terraform module creates an Azure Monitor Action Group with support for email, SMS, and webhook receivers.
+This Terraform module creates an Azure Monitor Log Analytics Workspace.
 
 ## Inputs
 
@@ -10,4 +10,4 @@ This Terraform module creates an Azure Monitor Action Group with support for ema
 
 ## Outputs
 
-- `law_id`: The ID of the Action Group
+- `law_id`: The ID of the Log Analytics Workspace
