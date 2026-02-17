@@ -62,7 +62,7 @@ resource "azurerm_monitor_data_collection_rule" "this" {
 
   destinations {
     log_analytics {
-      name                  = var.law_destination_name
+      name                  = var.law_name
       workspace_resource_id = var.law_id
     }
 
