@@ -1,19 +1,53 @@
 
-variable "name"               { type = string }
-variable "resource_group_name" { type = string }
-variable "location"            { type = string }
-variable "description"         { type = string  default = null }
-variable "data_collection_endpoint_id" { type = string default = null }
-
-variable "law_destination_name"  { type = string default = "logs" }
-variable "workspace_resource_id" { type = string }
-
-variable "enable_azure_monitor_metrics" { type = bool   default = false }
-variable "azure_monitor_metrics_name"   { type = string default = "metrics" }
-variable "event_hub_destinations" {
-  type    = list(object({ name = string, event_hub_id = string }))
-  default = []
+variable "environment" {
+  type = string
 }
+
+variable "workload" {
+  type = string
+}
+
+variable "department" {
+  type = string
+}
+
+variable "location_cli" {
+  type = string
+}
+
+variable "resource_group_name"{
+    type = string
+}
+
+variable "description" { 
+    type = string  default = null 
+}
+
+variable "data_collection_endpoint_id" { 
+    type = string default = null 
+}
+
+variable "law_destination_name"  { 
+    type = string default = "logs" 
+}
+
+variable "workspace_resource_id" { 
+    type = string 
+}
+
+variable "enable_azure_monitor_metrics" { 
+    type = bool   
+    default = false 
+}
+variable "azure_monitor_metrics_name" { 
+    type = string default = "metrics" 
+}
+
+variable "event_hub_destinations" {
+    type    = list(object({ name = string, event_hub_id = string }))
+    default = []
+}
+
 variable "storage_blob_destinations" {
   type    = list(object({ name = string, storage_account_id = string, container_name = string }))
   default = []
