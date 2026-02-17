@@ -29,12 +29,12 @@ variable "data_collection_endpoint_id" {
     default = null 
 }
 
-variable "law_destination_name"  { 
+variable "law_name"  { 
     type = string 
     default = "logs" 
 }
 
-variable "workspace_resource_id" { 
+variable "law_id" { 
     type = string 
 }
 
