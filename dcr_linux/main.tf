@@ -63,7 +63,7 @@ resource "azurerm_monitor_data_collection_rule" "this" {
   destinations {
     log_analytics {
       name                  = var.law_destination_name
-      workspace_resource_id = var.workspace_resource_id
+      workspace_resource_id = var.law_id
     }
 
     dynamic "azure_monitor_metrics" {
