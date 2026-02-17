@@ -1,6 +1,6 @@
 
 resource "azurerm_monitor_data_collection_rule" "this" {
-  name                        = var.name
+  name                        = "${var.location_cli}-${var.environment}-${var.workload}-${var.department}-dcr-linux-am"
   resource_group_name         = var.resource_group_name
   location                    = var.location_cli
   description                 = var.description
