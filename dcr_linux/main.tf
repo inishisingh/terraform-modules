@@ -2,7 +2,7 @@
 resource "azurerm_monitor_data_collection_rule" "this" {
   name                        = var.name
   resource_group_name         = var.resource_group_name
-  location                    = var.location
+  location                    = var.location_cli
   description                 = var.description
   kind                        = "Linux"
   data_collection_endpoint_id = var.data_collection_endpoint_id
