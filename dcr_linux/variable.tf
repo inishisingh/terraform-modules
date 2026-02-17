@@ -20,15 +20,18 @@ variable "resource_group_name"{
 }
 
 variable "description" { 
-    type = string  default = null 
+    type = string  
+    default = null 
 }
 
 variable "data_collection_endpoint_id" { 
-    type = string default = null 
+    type = string 
+    default = null 
 }
 
 variable "law_destination_name"  { 
-    type = string default = "logs" 
+    type = string 
+    default = "logs" 
 }
 
 variable "workspace_resource_id" { 
