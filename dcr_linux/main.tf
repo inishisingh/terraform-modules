@@ -120,6 +120,4 @@ resource "azurerm_monitor_data_collection_rule" "this" {
       identity_ids = var.identity_ids
     }
   }
-
-  tags = var.tags
 }
