@@ -12,7 +12,6 @@ variable "dcr_resource_id" {
 variable "tag_key" {
   description = "Tag key used to include VMs in monitoring (embedded in policy condition)."
   type        = string
-  default     = "monitor"
 }
 
 variable "monitoring_tag_values" {
