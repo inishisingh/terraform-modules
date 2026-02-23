@@ -2,7 +2,7 @@
 resource "azurerm_monitor_data_collection_rule" "this" {
   name                        = var.name
   resource_group_name         = var.resource_group_name
-  location                    = var.location
+  location                    = var.location_cli
   description                 = var.description
   kind                        = "Windows"
   data_collection_endpoint_id = var.data_collection_endpoint_id
@@ -72,8 +72,8 @@ resource "azurerm_monitor_data_collection_rule" "this" {
   # DESTINATIONS
   destinations {
     log_analytics {
-      name                  = var.law_destination_name
-      workspace_resource_id = var.workspace_resource_id
+      name                  = var.law_name
+      workspace_resource_id = var.law_id
     }
 
     dynamic "azure_monitor_metrics" {
@@ -133,6 +133,4 @@ resource "azurerm_monitor_data_collection_rule" "this" {
       identity_ids = var.identity_ids
     }
   }
-
-  tags = var.tags
 }
