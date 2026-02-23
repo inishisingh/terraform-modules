@@ -120,4 +120,3 @@ variable "stream_declarations" {
 
 variable "identity_type" { type = string default = null }
 variable "identity_ids"  { type = list(string) default = [] }
-variable "tags"          { type = map(string)  default = {} }
