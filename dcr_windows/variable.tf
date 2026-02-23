@@ -64,7 +64,7 @@ variable "storage_blob_destinations" {
 
 # Data sources (Windows)
 variable "performance_counters" {
-  description = "Windows/Linux performance counters (e.g., \VmInsights\DetailedMetrics)."
+  description = "Windows/Linux performance counters"
   type = list(object({
     name                          = string
     streams                       = list(string)
