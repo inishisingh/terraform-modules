@@ -43,7 +43,8 @@ variable "enable_azure_monitor_metrics" {
     default = false 
 }
 variable "azure_monitor_metrics_name" { 
-    type = string default = "metrics" 
+    type = string 
+    default = "metrics" 
 }
 
 variable "event_hub_destinations" {
@@ -118,5 +119,11 @@ variable "stream_declarations" {
   default = []
 }
 
-variable "identity_type" { type = string default = null }
-variable "identity_ids"  { type = list(string) default = [] }
+variable "identity_type" { 
+  type = string 
+  default = null 
+}
+variable "identity_ids"  { 
+  type = list(string) 
+  default = [] 
+}
