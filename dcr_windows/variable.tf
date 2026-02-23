@@ -45,7 +45,8 @@ variable "enable_azure_monitor_metrics"{
 }
 variable "azure_monitor_metrics_name" { 
   type = string 
-  default = "metrics" }
+  default = "metrics"
+}
 variable "event_hub_destinations" {
   type    = list(object({ name = string, event_hub_id = string }))
   default = []
