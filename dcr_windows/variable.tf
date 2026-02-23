@@ -1,13 +1,42 @@
 
-variable "name"               { type = string }
-variable "resource_group_name" { type = string }
-variable "location"            { type = string }
-variable "description"         { type = string  default = null }
-variable "data_collection_endpoint_id" { type = string default = null }
+variable "environment" {
+  type = string
+}
 
-# LAW destination
-variable "law_destination_name"    { type = string default = "logs" }
-variable "workspace_resource_id"   { type = string }
+variable "workload" {
+  type = string
+}
+
+variable "department" {
+  type = string
+}
+
+variable "location_cli" {
+  type = string
+}
+
+variable "resource_group_name"{
+    type = string
+}
+
+variable "description" { 
+    type = string  
+    default = null 
+}
+
+variable "data_collection_endpoint_id" { 
+    type = string 
+    default = null 
+}
+
+variable "law_name"  { 
+    type = string 
+    default = "logs" 
+}
+
+variable "law_id" { 
+    type = string 
+}
 
 # Optional destinations
 variable "enable_azure_monitor_metrics" { type = bool   default = false }
@@ -96,4 +125,3 @@ variable "stream_declarations" {
 # Identity & tags
 variable "identity_type" { type = string default = null } # "SystemAssigned" or "UserAssigned"
 variable "identity_ids"  { type = list(string) default = [] }
-variable "tags"          { type = map(string)  default = {} }
