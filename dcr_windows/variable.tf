@@ -39,8 +39,13 @@ variable "law_id" {
 }
 
 # Optional destinations
-variable "enable_azure_monitor_metrics" { type = bool   default = false }
-variable "azure_monitor_metrics_name"   { type = string default = "metrics" }
+variable "enable_azure_monitor_metrics"{ 
+  type = bool   
+  default = false 
+}
+variable "azure_monitor_metrics_name" { 
+  type = string 
+  default = "metrics" }
 variable "event_hub_destinations" {
   type    = list(object({ name = string, event_hub_id = string }))
   default = []
