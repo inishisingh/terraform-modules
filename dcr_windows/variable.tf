@@ -48,11 +48,17 @@ variable "azure_monitor_metrics_name" {
   default = "metrics"
 }
 variable "event_hub_destinations" {
-  type    = list(object({ name = string, event_hub_id = string }))
+  type    = list(object({ 
+    name = string
+    event_hub_id = string 
+}))
   default = []
 }
 variable "storage_blob_destinations" {
-  type    = list(object({ name = string, storage_account_id = string, container_name = string }))
+  type    = list(object({ 
+    name = string
+    storage_account_id = string
+    container_name = string }))
   default = []
 }
 
@@ -123,11 +129,19 @@ variable "data_flows" {
 variable "stream_declarations" {
   type = list(object({
     stream_name = string
-    columns     = list(object({ name = string, type = string }))
+    columns     = list(object({ 
+      name = string 
+      type = string }))
   }))
   default = []
 }
 
 # Identity & tags
-variable "identity_type" { type = string default = null } # "SystemAssigned" or "UserAssigned"
-variable "identity_ids"  { type = list(string) default = [] }
+variable "identity_type" { 
+  type = string 
+  default = null 
+} # "SystemAssigned" or "UserAssigned"
+variable "identity_ids"  { 
+  type = list(string) 
+  default = [] 
+}
