@@ -145,3 +145,9 @@ variable "identity_ids"  {
   type = list(string) 
   default = [] 
 }
+
+variable "workspace_resource_id"  { 
+  type = list(string) 
+  default = [] 
+}
+
