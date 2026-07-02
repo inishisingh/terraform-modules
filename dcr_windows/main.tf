@@ -5,7 +5,6 @@ resource "azurerm_monitor_data_collection_rule" "this" {
   location                    = var.location_cli
   description                 = var.description
   kind                        = "Windows"
-  data_collection_endpoint_id = var.data_collection_endpoint_id
 
   # DATA SOURCES
   dynamic "data_sources" {
