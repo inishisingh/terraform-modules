@@ -24,11 +24,6 @@ variable "description" {
     default = null 
 }
 
-variable "data_collection_endpoint_id" { 
-    type = string 
-    default = null 
-}
-
 variable "law_name"  { 
     type = string 
     default = "logs" 
