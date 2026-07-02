@@ -5,7 +5,6 @@ resource "azurerm_monitor_data_collection_rule" "this" {
   location                    = var.location_cli
   description                 = var.description
   kind                        = "Linux"
-  data_collection_endpoint_id = var.data_collection_endpoint_id
 
   dynamic "data_sources" {
     for_each = length(var.performance_counters) > 0 || length(var.syslog) > 0 || length(var.log_files) > 0 || length(var.extensions) > 0 ? [1] : []
