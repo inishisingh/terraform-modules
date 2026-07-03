@@ -123,7 +123,7 @@ provider "azurerm" {
 
       name                 = "assign-ama-dcra-windows-by-tag"
       display_name         = "Assign AMA + DCR (Windows) when tag present"
-      subscription_id      = each.valu
+      subscription_id      = each.value
       policy_definition_id = azurerm_policy_definition.ama_by_tag.id
 
       identity { type = "SystemAssigned" }
