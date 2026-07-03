@@ -101,32 +101,49 @@
       })
     }
 
-    resource"azurerm_subscription_policy_assignment" "assign" {
-      name                 = "assign-ama-dcra-linux-by-tag"
-      display_name         = "Assign AMA + DCR (Linux) when tag present"
-      scope                = var.policy_assignment_scope_id
-      policy_definition_id = azurerm_policy_definition.ama_by_tag.id
+    
+resource "azurerm_subscription_policy_assignment" "assign" {
+  for_each = toset(var.subscription_ids)
 
-      identity { type = "SystemAssigned" }
+  name                 = "assign-ama-dcra-linux-by-tag"
+  display_name         = "Assign AMA + DCR (Linux) when tag present"
 
-      parameters = jsonencode({
-        dcrResourceId       = { value = var.dcr_resource_id },
-        monitoringTagValues = { value = var.monitoring_tag_values }
-      })
+  subscription_id      = each.value
+  policy_definition_id = azurerm_policy_definition.ama_by_tag.id
+
+  location = var.location_cli
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  parameters = jsonencode({
+    dcrResourceId = {
+      value = var.dcr_resource_id
     }
+
+    monitoringTagValues = {
+      value = var.monitoring_tag_values
+    }
+  })
+}
 
     resource "azurerm_role_assignment" "pa_vm_contrib" {
-      scope              = var.policy_assignment_scope_id
+      for_each = azurerm_subscription_policy_assignment.assign
+      scope              = each.value.subscription_id
       role_definition_id = local.role_vm_contributor
-      principal_id       = azurerm_subscription_policy_assignment.assign.identity[0].principal_id
-    }
-    resource "azurerm_role_assignment" "pa_mon_contrib" {
-      scope              = var.policy_assignment_scope_id
-      role_definition_id = local.role_monitoring_contributor
-      principal_id       = azurerm_subscription_policy_assignment.assign.identity[0].principal_id
-    }
+      principal_id       = each.value.identity[0].principal_id
+}
+    resource "azurerm_role_assignment" "pa_vm_contrib" {
+      for_each = azurerm_subscription_policy_assignment.assign
+      scope              = each.value.subscription_id
+      role_definition_id = local.role_vm_contributor
+      principal_id       = each.value.identity[0].principal_id
+}
     resource "azurerm_role_assignment" "pa_la_contrib" {
-      scope              = var.policy_assignment_scope_id
-      role_definition_id = local.role_la_contributor
-      principal_id       = azurerm_subscription_policy_assignment.assign.identity[0].principal_id
+      for_each = azurerm_subscription_policy_assignment.assign
+      scope              = each.value.subscription_id
+      role_definition_id = local.role_vm_contributor
+      principal_id       = each.value.identity[0].principal_id
+}
     }
