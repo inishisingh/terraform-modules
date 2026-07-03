@@ -3,6 +3,8 @@ variable "subscription_ids" {
   type = list(string)
 }
 
+variable "policy_assignment_scope_id" {}
+
 variable "dcr_resource_id" {
   description = "Resource ID of the Data Collection Rule to associate VMs with."
   type        = string
