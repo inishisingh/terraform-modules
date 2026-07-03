@@ -117,7 +117,7 @@ provider "azurerm" {
       })
     }
 
-    resource "azurerm_policy_assignment" "assign" {
+    resource "azurerm_subscription_policy_assignment" "assign" {
       name                 = "assign-ama-dcra-windows-by-tag"
       display_name         = "Assign AMA + DCR (Windows) when tag present"
       scope                = var.policy_assignment_scope_id
@@ -134,15 +134,15 @@ provider "azurerm" {
     resource "azurerm_role_assignment" "pa_vm_contrib" {
       scope              = var.policy_assignment_scope_id
       role_definition_id = local.role_vm_contributor
-      principal_id       = azurerm_policy_assignment.assign.identity[0].principal_id
+      principal_id       = azurerm_subscription_policy_assignment.assign.identity[0].principal_id
     }
     resource "azurerm_role_assignment" "pa_mon_contrib" {
       scope              = var.policy_assignment_scope_id
       role_definition_id = local.role_monitoring_contributor
-      principal_id       = azurerm_policy_assignment.assign.identity[0].principal_id
+      principal_id       = azurerm_subscription_policy_assignment.assign.identity[0].principal_id
     }
     resource "azurerm_role_assignment" "pa_la_contrib" {
       scope              = var.policy_assignment_scope_id
       role_definition_id = local.role_la_contributor
-      principal_id       = azurerm_policy_assignment.assign.identity[0].principal_id
+      principal_id       = azurerm_subscription_policy_assignment.assign.identity[0].principal_id
     }
