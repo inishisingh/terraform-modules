@@ -17,3 +17,7 @@ variable "monitoring_tag_values" {
   type        = list(string)
   default     = ["on", "true", "yes"]
 }
+
+variable "location_cli" {
+  type = string
+}
