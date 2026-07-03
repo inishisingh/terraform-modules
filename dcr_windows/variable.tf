@@ -141,8 +141,3 @@ variable "identity_ids"  {
   default = [] 
 }
 
-variable "workspace_resource_id"  { 
-  type = list(string) 
-  default = [] 
-}
-
