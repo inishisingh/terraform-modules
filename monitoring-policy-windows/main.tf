@@ -117,10 +117,13 @@ provider "azurerm" {
       })
     }
 
+    
     resource "azurerm_subscription_policy_assignment" "assign" {
+      for_each = toset(var.subscription_ids)
+
       name                 = "assign-ama-dcra-windows-by-tag"
       display_name         = "Assign AMA + DCR (Windows) when tag present"
-      scope                = var.policy_assignment_scope_id
+      subscription_id      = each.valu
       policy_definition_id = azurerm_policy_definition.ama_by_tag.id
 
       identity { type = "SystemAssigned" }
@@ -132,17 +135,20 @@ provider "azurerm" {
     }
 
     resource "azurerm_role_assignment" "pa_vm_contrib" {
-      scope              = var.policy_assignment_scope_id
-      role_definition_id = local.role_vm_contributor
-      principal_id       = azurerm_subscription_policy_assignment.assign.identity[0].principal_id
-    }
+    for_each = azurerm_subscription_policy_assignment.assign 
+    scope              = each.value.subscription_id
+    role_definition_id = local.role_vm_contributor
+    principal_id       = each.value.identity[0].principal_id
+}
     resource "azurerm_role_assignment" "pa_mon_contrib" {
-      scope              = var.policy_assignment_scope_id
-      role_definition_id = local.role_monitoring_contributor
-      principal_id       = azurerm_subscription_policy_assignment.assign.identity[0].principal_id
-    }
+    for_each = azurerm_subscription_policy_assignment.assign
+    scope              = each.value.subscription_id
+    role_definition_id = local.role_monitoring_contributor
+    principal_id       = each.value.identity[0].principal_id
+}
     resource "azurerm_role_assignment" "pa_la_contrib" {
-      scope              = var.policy_assignment_scope_id
-      role_definition_id = local.role_la_contributor
-      principal_id       = azurerm_subscription_policy_assignment.assign.identity[0].principal_id
-    }
+    for_each = azurerm_subscription_policy_assignment.assign
+    scope              = each.value.subscription_id
+    role_definition_id = local.role_la_contributor
+    principal_id       = each.value.identity[0].principal_id
+}
