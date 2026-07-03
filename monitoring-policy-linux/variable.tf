@@ -1,7 +1,6 @@
 
-variable "policy_assignment_scope_id" {
-  description = "Scope where the policy will be assigned (subscription/RG/MG)."
-  type        = string
+variable "subscription_ids" {
+  type = list(string)
 }
 
 variable "dcr_resource_id" {
